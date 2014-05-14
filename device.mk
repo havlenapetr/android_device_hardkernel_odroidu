@@ -213,8 +213,8 @@ PRODUCT_COPY_FILES += \
 	device/hardkernel/odroidu/drivers/rt5370sta.cal:system/etc/firmware/rt5370sta.cal 
 
 PRODUCT_COPY_FILES += \
-	device/hardkernel/drivers/rtl8191su_u.ko:system/lib/modules/rtl8191su.ko \
-	device/hardkernel/drivers/rtl8192cu_u.ko:system/lib/modules/rtl8192cu.ko
+	device/hardkernel/odroidu/drivers/rtl8191su_u.ko:system/lib/modules/rtl8191su.ko \
+	device/hardkernel/odroidu/drivers/rtl8192cu_u.ko:system/lib/modules/rtl8192cu.ko
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
@@ -224,20 +224,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # USB Ethernet Module
 #
 PRODUCT_COPY_FILES += \
-	device/hardkernel/drivers/smsc95xx_u.ko:system/lib/modules/smsc95xx.ko \
-	device/hardkernel/drivers/ax88179_178a_u.ko:system/lib/modules/ax88179_178a.ko
+	device/hardkernel/odroidu/drivers/smsc95xx_u.ko:system/lib/modules/smsc95xx.ko \
+	device/hardkernel/odroidu/drivers/ax88179_178a_u.ko:system/lib/modules/ax88179_178a.ko
 
 #
 # UVC Module
 #
 PRODUCT_COPY_FILES += \
-	device/hardkernel/drivers/uvcvideo_u.ko:system/lib/modules/uvcvideo.ko
+	device/hardkernel/odroidu/drivers/uvcvideo_u.ko:system/lib/modules/uvcvideo.ko
 #
 # sound card Module
 #
 PRODUCT_COPY_FILES += \
-	device/hardkernel/drivers/snd-usb-audio_u.ko:system/lib/modules/snd-usb-audio.ko \
-	device/hardkernel/drivers/snd-usbmidi-lib_u.ko:system/lib/modules/snd-usbmidi-lib.ko
+	device/hardkernel/odroidu/drivers/snd-usb-audio_u.ko:system/lib/modules/snd-usb-audio.ko \
+	device/hardkernel/odroidu/drivers/snd-usbmidi-lib_u.ko:system/lib/modules/snd-usbmidi-lib.ko
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
