@@ -16,5 +16,4 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_PRODUCT),odroidu)
     include $(call all-makefiles-under,$(LOCAL_PATH))
-    include $(all-subdir-makefiles)
 endif

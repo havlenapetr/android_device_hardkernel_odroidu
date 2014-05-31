@@ -3,11 +3,10 @@
 /dev/ump                  0666   system     graphics
 /dev/exynos-mem           0666   system     graphics
 /dev/s3c-mfc              0660   media      graphics
-/dev/s3c-mem              0660   system     system
 /dev/video0               0660   system     camera
 /dev/video1               0660   system     camera
 /dev/video2               0660   system     camera
-/dev/video3               0660   system     system
+/dev/video3               0660   system     camera
 /dev/video11              0666   system     system
 /dev/video12              0666   system     system
 /dev/video16              0660   system     system
@@ -16,18 +15,10 @@
 /dev/i2c-2                0660   system     system
 /dev/CEC                  0660   system     system
 /dev/HPD                  0660   system     system
-/dev/pmem_gpu1            0660   system     graphics
-/dev/i2c-0                0660   system     system
-/dev/i2c-9                0660   system     system
 
 # ULP Audio
 /dev/srp                  0660   system     audio
 /dev/srp_ctrl             0660   system     audio
-
-#codewalker
-#for gps
-/dev/ttyACM0	0666	gps		gps
-/dev/ttyUSB0	0666	gps		gps
 
 # for UVC WEBCAM
 /dev/video4               0666   system     camera
@@ -48,3 +39,7 @@
 /dev/bus/usb/001/008	0777	root	usb
 /dev/bus/usb/001/009	0777	root	usb
 /dev/bus/usb/001/010	0777	root	usb
+
+#for gps
+/dev/ttyACM0	0666	gps		gps
+/dev/ttyUSB0	0666	gps		gps
