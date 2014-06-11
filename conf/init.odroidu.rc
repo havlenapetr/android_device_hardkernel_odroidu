@@ -75,8 +75,6 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw
 
-on boot
-
 # Permissions for backlight
     chown system system /sys/class/backlight/pwm-backlight.0/brightness
     chmod 0666 /sys/class/backlight/pwm-backlight.0/brightness
