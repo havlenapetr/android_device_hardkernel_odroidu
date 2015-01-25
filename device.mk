@@ -27,11 +27,6 @@ KERNEL_DIR ?= ../kernel
 
 include $(LOCAL_PATH)/BoardConfig.mk
 
-include device/rockchip/common/phone/rk30_phone.mk
-# Get the long list of APNs
-PRODUCT_COPY_FILES += device/rockchip/common/phone/etc/apns-full-conf.xml:system/etc/apns-conf.xml
-PRODUCT_COPY_FILES += device/rockchip/common/phone/etc/spn-conf.xml:system/etc/spn-conf.xml
-
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 ifeq ($(BOARD_USES_HGL),true)
@@ -72,7 +67,8 @@ endif
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
-    setup_fs
+    setup_fs \
+    mkimage
 
 #3G Modem	
 PRODUCT_PACKAGES += \
@@ -271,21 +267,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libwapi
 
-PRODUCT_COPY_FILES += \
-    device/hardkernel/proprietary/apk/Ultra_Explorer.apk:system/app/Ultra_Explorer.apk \
-    device/hardkernel/proprietary/apk/jackpal.androidterm.apk:system/app/jackpal.androidterm.apk \
-    device/hardkernel/proprietary/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
-
-PRODUCT_COPY_FILES += \
-    device/hardkernel/proprietary/apk/DicePlayer.apk:system/app/DicePlayer.apk \
-    device/hardkernel/proprietary/lib/libSoundTouch.so:system/lib/libSoundTouch.so \
-    device/hardkernel/proprietary/lib/libdice_kk.so:system/lib/libdice_kk.so \
-    device/hardkernel/proprietary/lib/libdice_loadlibrary.so:system/lib/libdice_loadlibrary.so \
-    device/hardkernel/proprietary/lib/libdice_software.so:system/lib/libdice_software.so \
-    device/hardkernel/proprietary/lib/libdice_software_kk.so:system/lib/libdice_software_kk.so \
-    device/hardkernel/proprietary/lib/libffmpeg_dice.so:system/lib/libffmpeg_dice.so \
-    device/hardkernel/proprietary/lib/libsonic.so:system/lib/libsonic.so
-
 # init.d support
 PRODUCT_COPY_FILES += \
     device/hardkernel/proprietary/bin/sysinit:system/bin/sysinit
+
+# bootloader support
+PRODUCT_COPY_FILES += \
+    device/hardkernel/odroidu/bootloader/bl1.bin:$(PRODUCT_OUT)/bootloader/bl1.bin \
+    device/hardkernel/odroidu/bootloader/bl2.bin:$(PRODUCT_OUT)/bootloader/bl2.bin \
+    device/hardkernel/odroidu/bootloader/tzsw.bin:$(PRODUCT_OUT)/bootloader/tzsw.bin \
+    device/hardkernel/odroidu/bootloader/u-boot.bin:$(PRODUCT_OUT)/bootloader/u-boot.bin
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/hardkernel/odroidu/zImage
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
